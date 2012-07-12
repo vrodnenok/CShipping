@@ -1,0 +1,23 @@
+ {% extends 'base.html' %}
+
+{% block content%}
+<br />
+<form id="vessel_selection" action="/xhr_test" method="post">{% csrf_token %}
+    <label> Select vessel:</label>
+    <select name="q" id="q">
+        {% for vessel in vessels %}
+        <option value='{{vessel.vsl_id}}'>{{vessel.vsl_name}}</option>
+        {% endfor %}
+    </select>
+    <label> Select voyage:</label>
+    <select name="vg" id="vg">
+    </select> 
+</form>
+<form id="voyage_selection" action="/xhr_test" method="post">{% csrf_token %}   
+</form>
+<br/>
+<div id="operations"> </div>
+<br/>
+<button id ="dist">Manage distances</button>
+<br /><br /><a href="/blog"> Blog </a>	
+{% endblock %}

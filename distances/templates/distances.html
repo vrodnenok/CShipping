@@ -1,0 +1,47 @@
+{% extends 'dist_base.html' %}
+
+{% block content%}
+<h2>Manage ports/distances table</h2>
+<table id = 'adder'>
+        <tr>
+            <td class='add'><input value=''/></td>
+            <td class='add'><input value=''/></td>
+            <td class='add'><input value=''/></td>
+            <td><button id='add' style='width:100%'>Add</button></td>
+        </tr>    
+</table>
+
+<label for 'find'> Inter port name:</label><form id = 'find'><input id = 'filter'/></form>
+
+<div id = 'results'>
+<table id='distances_table' border = 1 cellpadding=2 cellspacing=1 >
+        {% for port in ports %}
+        <tr value='{{port.id}}'>
+            <td><input value='{{port.fport}}'/></td>
+            <td><input value='{{port.tport}}'/></td>
+            <td><input value='{{port.distance}}'/></td>
+            <td><button class='update'>Update</button></td>
+            <td><button class='delete'>Delete</button></td>
+        </tr>    
+        {% endfor %}
+</table>
+</div>
+<!--
+#<form id="vessel_selection" action="/xhr_test" method="post">{% csrf_token %}
+#    <label> Select vessel:</label>
+#    <select name="q" id="q">
+#        {% for vessel in vessels %}
+#        <option value='{{vessel.vsl_id}}'>{{vessel.vsl_name}}</option>
+#        {% endfor %}
+#    </select>
+#    <label> Select voyage:</label>
+#    <select name="vg" id="vg">
+#    </select>
+#    <button id ="dist">Manage distances</button>
+#</form>
+-->
+<br/>
+<a href="/">back to main page</a>  
+          
+{% endblock %}
+
