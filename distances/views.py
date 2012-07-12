@@ -1,6 +1,7 @@
 # Create your views here.
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response 
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import *
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -72,7 +73,8 @@ def updates(request):
             if len(allports) > 0:
                 return HttpResponse(resp)
             else: 
-                return HttpResponse ('Nothing has been found')
+                response = HttpResponse('Nothing has been found')
+                return response
                 
             # {% for port in ports %}
             # <tr value='{{port.id}}'>

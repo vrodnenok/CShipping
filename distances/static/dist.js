@@ -1,10 +1,10 @@
 //alert('imported script in action');
+$('#add').click(addDistance);
+$('#filter').on('input', findPorts);
 bindEvents();
 
 function bindEvents(){
     $('.update').click(updateDistance);
-    $('#add').click(addDistance);
-    $('#filter').on('input', findPorts);
     $('.delete').click(deleteRecord);
 }
 

@@ -3,7 +3,7 @@ from django.views.decorators.csrf import *
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponse
-from django.utils import simplejson
+#from django.utils import simplejson
 from models import Vessels, Voyages, Operations, Ports
 
 
