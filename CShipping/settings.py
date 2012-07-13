@@ -1,5 +1,4 @@
 # Django settings for CShipping project.
-import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -13,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'capital_shipping',                      # Or path to database file if using sqlite3.
+        'NAME': 'shipping',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': '8102977aa',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -67,7 +66,7 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = ('/home/victor/Work/Aptana/CShipping/static',)
+STATICFILES_DIRS = ('/home/victor/Work/Aptana/CShipping/static/',)
 
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
@@ -124,6 +123,8 @@ INSTALLED_APPS = (
     'blog',
     'CShipping',
     'distances',
+    #'examples',
+    #'apiexamples',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -155,8 +156,6 @@ LOGGING = {
     }
 }
 
-DAJAXICE_MEDIA_PREFIX="dajaxice"
-
 TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
                                "django.core.context_processors.debug",
                                "django.core.context_processors.i18n",
@@ -167,3 +166,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
                                "django.core.context_processors.csrf",)
 
 GOOGLE_API_KEY='AIzaSyBRIhV9tVkRALdOWFXncT5b84sWnknzZjQ'
+
+LOGIN_REDIRECT_URL='/'
+
+DAJAXICE_MEDIA_PREFIX='dajaxice'

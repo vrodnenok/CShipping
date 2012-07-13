@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 *.class
 *.pyc
 *.pyo
+=======
+*.log
+*.pot
+*.pyc
+local_settings.py
+>>>>>>> 244268746a0a5ea9c8032c00b71c275e73512c3a
