@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponse
 #from django.utils import simplejson
-from models import Vessels, Voyages, Operations, Ports
+from models import Vessel, Voyage, Operation, Port
 
 
 
@@ -13,7 +13,7 @@ from models import Vessels, Voyages, Operations, Ports
 @ensure_csrf_cookie
 @csrf_protect
 def index(request):
-    vessels=Vessels.objects.filter()
+    vessels=Vessel.objects.filter()
 #    return HttpResponse(vessels)
     return render_to_response('index.html', 
                               {'vessels':vessels}, context_instance=RequestContext(request))
@@ -26,12 +26,12 @@ def xhr_test(request):
         print request.POST
         if request.POST.get('vsl_id'):
             vsl_id=request.POST['vsl_id']
-            voyages=Voyages.objects.filter(vessels_id=vsl_id)
+            voyages=Voyage.objects.filter(vessels_id=vsl_id)
             for voy in voyages:
                 message += '<option value="%s">%s</option>' % (voy.voy_id, voy.voy_number)
         elif request.POST.get('voy_id'):
             print "processing request"
-            ports = Ports.objects.filter()
+            ports = Port.objects.filter()
             allports = []
             allports.append('At sea')
             for port in ports:
@@ -41,7 +41,7 @@ def xhr_test(request):
                     allports.append(port.tport)
             allports = sorted(allports)
             voy_id=request.POST['voy_id']
-            ops=Operations.objects.filter(voyages_id=voy_id)
+            ops=Operation.objects.filter(voyages_id=voy_id)
             print 'voyage selected'
             message += "<table border='2' id=voyages_table> <th> C/P date</th>"
             message += "<th> Vessels location</th><th> Coordinates </th><th>Type of operation</th>"

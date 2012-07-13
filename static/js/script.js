@@ -10,7 +10,7 @@ var Vessels = {
         this.config=config;
         this.bindEvents();
         $.ajaxSetup({
-            url: 'index.php',
+            url: '/',
             type: 'POST'
         })
     },
@@ -18,9 +18,22 @@ var Vessels = {
     bindEvents: function(){
         this.config.vesselSelection.click(this.get_voyages_list);
         this.config.voyageSelection.click(this.get_operations);
-        this.config.distanceManagement.click(this.manage_dist)
+        this.config.distanceManagement.click(this.manage_dist);
+        this.config.voyageManagement.click(this.manage_voyage);
     },
-      
+
+    manage_voyage: function(){
+        alert($("#q").val());
+        $.get("/voyages/",{
+         vsl_id: $("#q").val(),
+         voy_id: $("#vg").val()   
+        },    
+        function(data) {
+        console.log('voyage editor loaded');
+        $('#container').empty().append(data);
+    })    
+    },   
+       
     manage_dist: function(){
         window.open ('/distances','_self',false)
     },
@@ -73,6 +86,7 @@ Vessels.init({
     vesselSelection: $('#q'),
     voyageSelection: $('#vg'),
     distanceManagement: $('#dist'),
+    voyageManagement: $('#voyages'),
     form: $('#vessel_selection'),
     });
 

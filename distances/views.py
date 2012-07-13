@@ -7,14 +7,14 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.utils import simplejson
-from models import Vessels, Voyages, Operations, Ports
+from CShipping.models import Vessel, Voyage, Operation, Port
 
 @login_required(login_url='/accounts/login/')
 @ensure_csrf_cookie
 @csrf_protect
 def distances(request):
     print request
-    ports=Ports.objects.filter()
+    ports=Port.objects.filter()
 #    return HttpResponse(vessels)
     if request.is_ajax():
         if request.POST.get('action')=='update':
@@ -29,7 +29,7 @@ def updates(request):
     print request.POST
     if request.is_ajax():
         if request.POST.get('action')=='update':
-            dist=Ports()
+            dist=Port()
             dist.id=request.POST.get('id')
             dist.fport=request.POST.get('fport')
             dist.tport=request.POST.get('tport')
@@ -38,7 +38,7 @@ def updates(request):
             print dist.id
             return HttpResponse('ok')
         elif request.POST.get('action')=='add':
-            ports=Ports.objects.filter()
+            ports=Port.objects.filter()
             fport=request.POST.get('fport').lower()
             tport=request.POST.get('tport').lower()
             for port in ports:
@@ -49,7 +49,7 @@ def updates(request):
                 if port.tport.lower() == fport:
                     if port.fport.lower() == tport:
                         return HttpResponse('exists')
-            dist=Ports()
+            dist=Port()
             #dist.id=request.POST.get('id')
             dist.fport=request.POST.get('fport')
             dist.tport=request.POST.get('tport')
@@ -60,8 +60,8 @@ def updates(request):
         elif request.POST.get('action')=='find':
             resp = "<table id='distances_table' border = 2>"
             fltr = request.POST.get('filter')
-            fports = Ports.objects.filter(fport__istartswith = fltr)
-            tports = Ports.objects.filter(tport__istartswith = fltr)
+            fports = Port.objects.filter(fport__istartswith = fltr)
+            tports = Port.objects.filter(tport__istartswith = fltr)
             allports = fports | tports
             for port in allports:
                 resp+="<tr value='%s'>" % (port.id)
@@ -87,7 +87,7 @@ def updates(request):
             #</table>
         elif request.POST.get('action')=='delete':
             try:
-                Ports.objects.filter(id=request.POST.get('id')).delete()
+                Port.objects.filter(id=request.POST.get('id')).delete()
                 return HttpResponse ('deleted ok')
             except:
                 return HttpResponse('server was unable to selete file')

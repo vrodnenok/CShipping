@@ -6,7 +6,7 @@
     <label> Select vessel:</label>
     <select name="q" id="q">
         {% for vessel in vessels %}
-        <option value='{{vessel.vsl_id}}'>{{vessel.vsl_name}}</option>
+        <option value='{{vessel.id}}'>{{vessel.vsl_name}}</option>
         {% endfor %}
     </select>
     <label> Select voyage:</label>
@@ -16,9 +16,15 @@
 <form id="voyage_selection" action="/xhr_test" method="post">{% csrf_token %}   
 </form>
 <br/>
+        <tr value='{{port.id}}'>
+            <td><button id ="dist"> Manage distances </button></td>
+            <td><button id='voyages'> Manage voyages </button></td>
+            <td><button id='Something else'> Reserved </button></td>
+        </tr> 
+
+<br/>
 <div id="operations"> </div>
 <br/>
-<button id ="dist">Manage distances</button>
 <br /><br /><a href="/blog"> Blog </a>
 <script type = "text/javascript" src = "static/js/script.js"> </script>	
 {% endblock %}
