@@ -1,4 +1,4 @@
-# Django settings for CShipping project.
+# Django settings for CShipping project. (checkout)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
