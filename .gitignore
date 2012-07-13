@@ -1,10 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.class
 *.pyc
 *.pyo
 =======
+=======
+>>>>>>> 244268746a0a5ea9c8032c00b71c275e73512c3a
 *.log
 *.pot
 *.pyc
 local_settings.py
+<<<<<<< HEAD
 >>>>>>> 244268746a0a5ea9c8032c00b71c275e73512c3a
+=======
+>>>>>>> 244268746a0a5ea9c8032c00b71c275e73512c3a
+admin_not_working
