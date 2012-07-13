@@ -1,4 +1,4 @@
-{% extends 'dist_base.html' %}
+{% extends 'base.html' %}
 
 {% block content%}
 <h2>Manage ports/distances table</h2>
@@ -11,10 +11,10 @@
         </tr>    
 </table>
 
-<label for 'find'> Inter port name:</label><form id = 'find'><input id = 'filter'/></form>
+<label for 'find'> Name of the port:</label><form id = 'find'><input id = 'filter'/></form>
 
 <div id = 'results'>
-<table id='distances_table' border = 1 cellpadding=2 cellspacing=1 >
+<table id='distances_table' border = 2 cellpadding=2 cellspacing=1 >
         {% for port in ports %}
         <tr value='{{port.id}}'>
             <td><input value='{{port.fport}}'/></td>
@@ -42,6 +42,6 @@
 -->
 <br/>
 <a href="/">back to main page</a>  
-          
+<script type = "text/javascript" src = "static/js/dist.js"> </script>
 {% endblock %}
 

@@ -241,6 +241,7 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 table {
     border-collapse: collapse;
     border-color: #ccc;
+    margin: 15px;
 }
 
 td, th {
@@ -253,8 +254,8 @@ td, th {
 }
 
 th {
-    text-align: left;
-    font-size: 12px;
+    text-align: center;
+    font-size: 10px;
     font-weight: bold;
 }
 
@@ -451,6 +452,13 @@ input[type=text], input[type=password], textarea, select, .vTextField {
     font-weight: bold;
     color: white;
     float: right;
+}
+
+button {
+    border: 2px solid #5b80b2;
+    background: #7CA0C7 url(../img/default-bg.gif) bottom repeat-x;
+    color: white;
+    float: left;
 }
 
 .button.default:active, input[type=submit].default:active {

@@ -43,7 +43,7 @@ def xhr_test(request):
             voy_id=request.POST['voy_id']
             ops=Operations.objects.filter(voyages_id=voy_id)
             print 'voyage selected'
-            message += "<table border='1' id=voyages_table> <th> C/P date</th>"
+            message += "<table border='2' id=voyages_table> <th> C/P date</th>"
             message += "<th> Vessels location</th><th> Coordinates </th><th>Type of operation</th>"
             message += "<th> Action </th>"
             for op in ops:

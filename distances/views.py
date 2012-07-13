@@ -58,7 +58,7 @@ def updates(request):
             print dist.id
             return HttpResponse('ok')
         elif request.POST.get('action')=='find':
-            resp = "<table id='distances_table' border = 1 cellpadding=2 cellspacing=1 >"
+            resp = "<table id='distances_table' border = 2>"
             fltr = request.POST.get('filter')
             fports = Ports.objects.filter(fport__istartswith = fltr)
             tports = Ports.objects.filter(tport__istartswith = fltr)

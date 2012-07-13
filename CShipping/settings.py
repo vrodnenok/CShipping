@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'blog',
     'CShipping',
     'distances',
+    'voyages',
     #'examples',
     #'apiexamples',
 )
