@@ -1,3 +1,48 @@
+{% extends 'voyages_base.html' %}
+
+{% block content %}
 welcome to new voyage template
 
-<input id = "voy_name" value = '{{voy}}-{% now "Y" %}' disabled="disabled"/>
+<input id = "voy_name" value = '{{voy}}' disabled="disabled"/>
+<input id = "vessel_id" value = '{{vsl_id}}' disabled="disabled"/>
+<input id = "voyages_id" value = '{{voyages_id}}' disabled="disabled"/>
+
+<table id = 'voy_adder' border = 2 >
+    <th>Port name</th><th>Turn</th><th>Ops type</th><th>Agent</th><th>Cargo q-ty</th><th>L/D rate</th><th>Estimated DA</th><th>Comment</th><th>Action</th>
+        <tr>
+            <td id = 'port_name' class='voy_add'>
+                <select>
+                    {% for port in ports %}
+                    <option>{{port}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td id = 'port_turn' class='voy_add'><input value=''/></td>
+            <td class='voy_add'>
+                <select>
+                    <option>L</option>
+                    <option>D</option>
+                    <option>S</option>
+                </select>
+            </td>
+            <td><input value=''/></td>
+            <td><input value=''/></td>
+            <td><input value=''/></td>
+            <td><input value=''/></td>
+            <td id = 'est_da' class='voy_add'><input value=''/></td>
+            <td><button id='but_add' style='width:100%'> Add </button></td>
+        </tr>    
+        
+<!--
+        voyages_id = models.IntegerField(null=True, blank=True)
+    port = models.CharField(max_length=150, blank=True)
+    turn = models.IntegerField(null=True, blank=True)
+    ops_type = models.CharField(max_length=45, blank=True)
+    agent = models.CharField(max_length=150, blank=True)
+    ldrate = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    est_da = models.DecimalField(null=True, max_digits=12, decimal_places=4, blank=True)
+    comment = models.CharField(max_length=150, blank=True)
+-->
+</table>
+
+{% endblock %}

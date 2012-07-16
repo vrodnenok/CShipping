@@ -1,6 +1,12 @@
  {% extends 'base.html' %}
 
-{% block content%}
+{% block title %}
+    
+    Shipmanager main page - index 
+    
+ {% endblock %}
+
+{% block content %}
 <br />
 <form id="vessel_selection" action="/xhr_test" method="post">{% csrf_token %}
     <label> Select vessel:</label>

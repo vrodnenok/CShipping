@@ -24,14 +24,7 @@ var Vessels = {
 
     manage_voyage: function(){
         alert($("#q").val());
-        $.get("/voyages/",{
-         vsl_id: $("#q").val(),
-         voy_id: $("#vg").val()   
-        },    
-        function(data) {
-        console.log('voyage editor loaded');
-        $('#container').empty().append(data);
-    })    
+        window.open ('/voyages/vsl_id/'+$("#q").val()+'/voy_id/'+$("#vg").val(),'_self',false); 
     },   
        
     manage_dist: function(){

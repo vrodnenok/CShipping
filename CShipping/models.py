@@ -9,21 +9,44 @@
 
 from django.db import models
 
+class Report(models.Model):
+    voyages_id = models.IntegerField(null=True, blank=True)
+    vessels_id = models.IntegerField(null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
+    location = models.CharField(max_length=150, blank=True)
+    fuel1_rob = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    fuel2_rob = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    fuel3_rob = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    lo1_rob = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    lo2_rob = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    lo3_rob = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    fw_rob = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    mileage = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    time_underway = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    time_idle = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    delays_reason = models.CharField(max_length=150, blank=True)
+    prospects = models.CharField(max_length=150, blank=True)
+    weather_comment = models.CharField(max_length=150, blank=True)
+    comment = models.TextField(blank=True)
+    class Meta:
+        db_table = u'report'
+
 class Vport(models.Model):
     voyages_id = models.IntegerField(null=True, blank=True)
     port = models.CharField(max_length=150, blank=True)
     turn = models.IntegerField(null=True, blank=True)
     ops_type = models.CharField(max_length=45, blank=True)
     agent = models.CharField(max_length=150, blank=True)
+    cargo = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
     ldrate = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    est_da = models.DecimalField(null=True, max_digits=12, decimal_places=4, blank=True)
+    est_da = models.DecimalField(null=True, max_digits=12, decimal_places=2, blank=True)
     comment = models.CharField(max_length=150, blank=True)
     class Meta:
         db_table = u'vport'
 
 class Expense(models.Model):
     voyages_id = models.IntegerField(null=True, blank=True)
-    date = models.DateTimeField(null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
     kind = models.CharField(max_length=45, blank=True)
     location = models.CharField(max_length=150, blank=True)
     amount = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
@@ -50,6 +73,7 @@ class Income(models.Model):
 
 class Bunker(models.Model): 
     voyages_id = models.IntegerField(null=True, blank=True)
+    operations_id = models.IntegerField(null=True, blank=True)
     date = models.DateTimeField(null=True, blank=True)
     location = models.CharField(max_length=150, blank=True)
     kind = models.CharField(max_length=45, blank=True)
@@ -74,22 +98,22 @@ class Operation(models.Model):
     end = models.DateTimeField(null=True, blank=True)
     ops_type = models.CharField(max_length=45, blank=True)
     location = models.CharField(max_length=150, blank=True)
-    coords = models.CharField(max_length=60, blank=True)
-    bunk_rob = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
-    lo_rob = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    fw_rob = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    mileage = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    transit = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    delays = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    reason = models.CharField(max_length=60, blank=True)
-    prospects = models.CharField(max_length=150, blank=True)
+    fuel1_arr = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    fuel2_arr = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    fuel3_arr = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    lo1_arr = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    lo2_arr = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    lo3_arr = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    fuel1_dep = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    fuel2_dep = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    fuel3_dep = models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)
+    lo1_dep = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    lo2_dep = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    lo3_dep = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    fw_arr = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
+    fw_arr = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
     weather_comm = models.CharField(max_length=150, blank=True)
     comment = models.TextField(blank=True)
-    due_to_weather = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    due_to_strait = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    due_to_weekend = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    due_to_technical = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
-    due_to_other = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
     delay_comm = models.TextField(blank=True)
     class Meta:
         db_table = u'operation'
@@ -98,7 +122,7 @@ class Port(models.Model):
     fport = models.CharField(max_length=75, blank=True)
     tport = models.CharField(max_length=75, blank=True)
     region = models.CharField(max_length=21, blank=True)
-    distance = models.DecimalField(null=True, max_digits=11, decimal_places=0, blank=True)
+    distance = models.DecimalField(null=True, max_digits=11, decimal_places=2, blank=True)
     class Meta:
         db_table = u'port'
 

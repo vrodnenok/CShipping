@@ -2,14 +2,16 @@
 
 {% block content%}
 <h2>Manage ports/distances table</h2>
+<form id = 'addform'>
 <table id = 'adder'>
         <tr>
-            <td class='add'><input value=''/></td>
-            <td class='add'><input value=''/></td>
-            <td class='add'><input value=''/></td>
+            <td> <input class='required' value=''/></td>
+            <td> <input class='required' value=''/></td>
+            <td> <input class='required' value=''/></td>
             <td><button id='add' style='width:100%'>Add</button></td>
         </tr>    
 </table>
+</form>
 
 <label for 'find'> Name of the port:</label><form id = 'find'><input id = 'filter'/></form>
 

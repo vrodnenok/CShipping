@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            Manager soft        
-        </title>
-        <link rel="stylesheet" type="text/css" href="/static/css/base.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <h1>Capital Shipping Manager</h1>
-        <div id="container">
-        {% block content %}
-        {% endblock %}
-        </div>
-        <h3> ---- end of base template ----</h3>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.
+    w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+            <head>
+                <title>{% block title %}Hello, world!{% endblock title %}
+                </title>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+            </head>
+            <body>
+                {% block body %}
+                <h1>{% block heading %} Capital Shipping Manager
+                {% endblock heading %}</h1>
+                    <div id="container">
+                    {% block content %}
+                    {% endblock %}
+                    </div>
+                {% endblock body %}
+        <h3>{% block footer %} ---- end of base template ---- {% endblock %}</h3>
+        {% block scripts %}
+            {% endblock %}
     </body>
 </html>

@@ -31,16 +31,16 @@ def updates(request):
         if request.POST.get('action')=='update':
             dist=Port()
             dist.id=request.POST.get('id')
-            dist.fport=request.POST.get('fport')
-            dist.tport=request.POST.get('tport')
+            dist.fport=request.POST.get('fport').strip().lower().capitalize()
+            dist.tport=request.POST.get('tport').strip().lower().capitalize()
             dist.distance=request.POST.get('distance')
             dist.save()
             print dist.id
             return HttpResponse('ok')
         elif request.POST.get('action')=='add':
             ports=Port.objects.filter()
-            fport=request.POST.get('fport').lower()
-            tport=request.POST.get('tport').lower()
+            fport=request.POST.get('fport').strip().lower().capitalize()
+            tport=request.POST.get('tport').strip().lower().capitalize()
             for port in ports:
                 if port.fport.lower() == fport:
                     if port.tport.lower() == tport:
@@ -51,8 +51,8 @@ def updates(request):
                         return HttpResponse('exists')
             dist=Port()
             #dist.id=request.POST.get('id')
-            dist.fport=request.POST.get('fport')
-            dist.tport=request.POST.get('tport')
+            dist.fport=request.POST.get('fport').strip().lower().capitalize()
+            dist.tport=request.POST.get('tport').strip().lower().capitalize()
             dist.distance=request.POST.get('distance')
             dist.save()
             print dist.id

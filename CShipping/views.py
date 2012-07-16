@@ -28,7 +28,7 @@ def xhr_test(request):
             vsl_id=request.POST['vsl_id']
             voyages=Voyage.objects.filter(vessels_id=vsl_id)
             for voy in voyages:
-                message += '<option value="%s">%s</option>' % (voy.voy_id, voy.voy_number)
+                message += '<option value="%s">%s</option>' % (voy.id, voy.voy_number)
         elif request.POST.get('voy_id'):
             print "processing request"
             ports = Port.objects.filter()

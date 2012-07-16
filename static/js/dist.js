@@ -58,10 +58,15 @@ function updateDistance(){
 }
 
 function addDistance(){
+
+            alert($("#addform").validate());
+            return;
+ 
+
     var row=$(this).parent().parent();
     
     var cols = row.find('td');
-        $.post("/distances/update", {
+       $.post("/distances/update", {
             action: 'add',
 //            id : row.attr('value'),
             fport: cols.eq(0).children().val(),
